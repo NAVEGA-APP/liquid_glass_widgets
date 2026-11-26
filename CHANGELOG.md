@@ -1,3 +1,13 @@
+# Unreleased
+
+## Features
+
+- **iOS 26/27 confirmation dialog (`showGlassConfirmationDialog`, `GlassConfirmationDialogAction`):** Mirrors SwiftUI's `.confirmationDialog()` and UIKit's `UIAlertController(preferredStyle: .actionSheet)` calibrated against iOS 27.2. When anchored to a source control via `morphFrom` (`GlassMorphTrigger`) or `morphFromRect`, liquid-morphs into a `240 pt` floating Liquid Glass popover platter with a clear dismiss barrier (omitting Cancel by default, auto-flipping/clamping inside safe areas, and retracting back with trigger recoil on dismiss); when unanchored, presents the `320 pt` centered platter with stacked `48 pt` capsule actions and a Cancel button by default. Supports destructive, prominent primary (`Return`-key activation), custom `tintColor` / `foregroundColor`, disabled (`onPressed: null`), and `dismissOnPress` actions with live theme and brightness updates.
+
+## Deprecations
+
+- **`showGlassActionSheet` (`GlassActionSheetAction`, `GlassActionSheetStyle`) is deprecated in favour of `showGlassConfirmationDialog`:** Legacy action sheet APIs remain functional in `1.x` and will be removed in `2.0.0`.
+
 # 1.21.0
 
 ## Features
