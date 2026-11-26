@@ -1,3 +1,18 @@
+# Unreleased
+
+## Features
+
+- **`GlassToggle.button` (`Toggle(.button)`) & `GlassButton.isToggled`:** Adds `GlassToggle.button`, the native iOS 26/27 Liquid Glass capsule toggle button mirroring SwiftUI's `Toggle(...).toggleStyle(.button)` (calibrated against iOS 27.2 Simulator: 34 pt compact pill height, 44 pt icon-only min width, clear refractive glass when off → prominent tinted glass when on with automatic Rec. 709 luminance contrast, muted neutral glass pill when disabled-on, haptic selection click, keyboard Space/Enter activation, single-node `toggled` semantics, and automatic `GlassSurfaceStyle.solid` inheritance via `InheritedGlassSurfaceStyle`). Also adds `bool? isToggled` to `GlassButton` and `GlassButton.custom` forwarding toggle semantics to `GlassFocusRegion`.
+
+## Bug Fixes
+
+- **Disabled `GlassButton` Impeller Metal glass preservation:** In `GlassSurfaceStyle.glass` mode, disabled buttons now dim only their interior content (`Opacity(opacity: 0.5)`) inside `AdaptiveGlass` rather than wrapping the glass shader in an ancestor `Opacity` `saveLayer`, preventing disabled glass buttons and toggles from losing their refractive pill surface on Impeller Metal.
+
+## Deprecations
+
+- **`GlassChip`:** Marked `@Deprecated` in favour of `GlassToggle.button` (for selectable/filter toggles) and capsule-shaped `GlassButton.custom` (for pill actions). Will be removed in `2.0.0`.
+- **`GlassSheet`:** Marked `@Deprecated` in favour of `GlassModalSheet` (`GlassModalSheet.show` with `GlassSheetMode.dismissible` or `GlassSheetMode.persistent`). Extracted `GlassInteractionSilence` into its own non-deprecated shared widget (`lib/widgets/shared/glass_interaction_silence.dart`, exported from `liquid_glass_widgets.dart` and re-exported from `glass_sheet.dart` with zero breaking changes). Will be removed in `2.0.0`.
+
 # 1.21.0
 
 ## Features
